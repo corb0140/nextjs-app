@@ -1,4 +1,4 @@
-import React from "react";
+import { useSearchParams } from "next/navigation";
 
 const page = (props) => {
   let location = decodeURIComponent(props.params.location);

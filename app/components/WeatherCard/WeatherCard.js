@@ -1,9 +1,22 @@
+"use client";
+
 import classes from "./WeatherCard.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+import { useRouter } from "next/navigation";
+
 const WeatherCard = ({ weather }) => {
   const [showCard, setShowCard] = useState(true);
+  const router = useRouter();
+
+  const navigation = (route) => {
+    router.push(
+      `/${encodeURIComponent(
+        `${weather.name},${weather.sys.country}`
+      )}/${route}?main=${weather.main}`
+    );
+  };
 
   useEffect(() => {
     if (weather.name) {
@@ -31,26 +44,18 @@ const WeatherCard = ({ weather }) => {
           </div>
 
           <div className={classes.buttonContainer}>
-            <Link
+            <button
               className={classes.button}
-              href={
-                "/" +
-                encodeURIComponent(`${weather.name} ${weather.sys.country}`) +
-                "/drink"
-              }
+              onClick={() => navigation("drink")}
             >
               Perfect Drink
-            </Link>
-            <Link
+            </button>
+            <button
               className={classes.button}
-              href={
-                "/" +
-                encodeURIComponent(`${weather.name} ${weather.sys.country}`) +
-                "/movie"
-              }
+              onClick={() => navigation("movie")}
             >
               Perfect Movie
-            </Link>
+            </button>
           </div>
         </div>
       )}

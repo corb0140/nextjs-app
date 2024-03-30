@@ -1,59 +1,28 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import WeatherCard from "./components/WeatherCard/WeatherCard";
+
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [weather, setWeather] = useState({});
-  const [search, setSearch] = useState({ city: "", country: "" });
-  const cityNameRef = useRef(null);
-  const countryCodeRef = useRef(null);
+  const cityRef = useRef(null);
+  const countryRef = useRef(null);
+  const router = useRouter();
+
+  const navigation = () => {
+    router.push(
+      `/${encodeURIComponent(
+        `${cityRef.current.value},${countryRef.current.value}`
+      )}`
+    );
+  };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
 
-    setSearch({
-      city: cityNameRef.current.value,
-      country: countryCodeRef.current.value,
-    });
+    navigation();
 
     ev.target.reset();
   };
-
-  useEffect(() => {
-    if (search.city === "") return;
-
-    console.log(search);
-
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${search.city},${search.country}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`,
-      { cache: "force-cache" }
-    )
-      .then((response) => {
-        if (!response.ok) throw new Error("Failed to fetch data");
-
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-
-        setWeather({
-          name: data.name,
-          sys: data.sys,
-          main: data.weather[0].main,
-          description: data.weather[0].description,
-          temp: data.main.temp,
-          lat: data.coord.lat,
-          lon: data.coord.lon,
-        });
-
-        setTimeout(async () => {
-          setSearch({ city: "", country: "" });
-        }, 2000);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [search]);
 
   return (
     <>
@@ -67,24 +36,20 @@ export default function Home() {
             className="border-none outline-none p-2 text-black w-3/4"
             type="text"
             placeholder="Enter Your City"
-            ref={cityNameRef}
+            ref={cityRef}
             required
           />
           <input
             className="border-none outline-none p-2 text-black w-3/4"
             type="text"
             placeholder="Enter Your Country"
-            ref={countryCodeRef}
+            ref={countryRef}
             required
           />
           <button className="bg-purple-950 text-white p-2 w-3/4" type="submit">
             Submit
           </button>
         </form>
-
-        <div className="container max-w-full p-10">
-          <WeatherCard weather={weather} />
-        </div>
       </div>
     </>
   );

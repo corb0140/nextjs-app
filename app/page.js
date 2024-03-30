@@ -25,7 +25,7 @@ export default function Home() {
     console.log(search);
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${search.city},${search.country}&appid=${process.env.NEXT_PUBLIC_API_KEY}`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${search.city},${search.country}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`,
       { cache: "force-cache" }
     )
       .then((response) => {
@@ -41,7 +41,9 @@ export default function Home() {
           sys: data.sys,
           main: data.weather[0].main,
           description: data.weather[0].description,
-          icon: data.weather[0].icon,
+          temp: data.main.temp,
+          lat: data.coord.lat,
+          lon: data.coord.lon,
         });
 
         setTimeout(async () => {
@@ -64,14 +66,14 @@ export default function Home() {
           <input
             className="border-none outline-none p-2 text-black w-3/4"
             type="text"
-            placeholder="Current location"
+            placeholder="Enter Your City"
             ref={cityNameRef}
             required
           />
           <input
             className="border-none outline-none p-2 text-black w-3/4"
             type="text"
-            placeholder="Country code"
+            placeholder="Enter Your Country"
             ref={countryCodeRef}
             required
           />

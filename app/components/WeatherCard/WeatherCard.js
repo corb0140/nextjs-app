@@ -35,12 +35,11 @@ const WeatherCard = ({ weather }) => {
           </h1>
           <p className={classes.paragraph}>{weather.main}</p>
           <p className={classes.paragraph}>{weather.description}</p>
-          <div>
-            <img
-              className={classes.icon}
-              src={`http://openweathermap.org/img/wn/${weather.icon}.png`}
-              alt="weather icon"
-            />
+          <p className={classes.paragraph}>Temperature: {weather.temp}°C</p>
+
+          <div className={classes.coordinates}>
+            <span className={classes.paragraph}>lat: {weather.lat}</span>
+            <span className={classes.paragraph}>lon: {weather.lon}</span>
           </div>
 
           <div className={classes.buttonContainer}>

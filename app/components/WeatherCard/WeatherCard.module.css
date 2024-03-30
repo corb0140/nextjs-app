@@ -23,6 +23,11 @@
   color: #000;
 }
 
+.coordinates {
+  display: flex;
+  gap: 1rem;
+}
+
 .icon {
   display: flex;
 }

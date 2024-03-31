@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 
 const page = (props) => {
   const location = decodeURIComponent(props.params.location);
-  const [movie, setMovie] = useState({});
+  const [movies, setMovies] = useState([]);
   const searchParams = useSearchParams();
   const query = searchParams.get("main");
 
@@ -25,12 +25,7 @@ const page = (props) => {
       })
       .then((data) => {
         console.log(data);
-
-        setMovie({
-          title: data.results[0].title,
-          desc: data.results[0].overview,
-          poster_path: data.results[0].poster_path,
-        });
+        setMovies(data.results);
       })
       .catch((error) => {
         console.error(error);
@@ -42,7 +37,9 @@ const page = (props) => {
       <h2 className="pb-3">
         Movies for <span className="text-teal-300">{query}</span>
       </h2>
-      <MovieCard movie={movie} location={location} />
+
+      <p className="pb-3">Click on card to see movie details</p>
+      <MovieCard movies={movies} location={location} />
     </div>
   );
 };

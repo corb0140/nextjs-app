@@ -12,7 +12,7 @@ export default function Home() {
     router.push(
       `/${encodeURIComponent(
         `${cityRef.current.value}, ${countryRef.current.value}`
-      )}/weather`
+      )}`
     );
   };
 

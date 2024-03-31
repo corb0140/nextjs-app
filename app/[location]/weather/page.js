@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import WeatherCard from "../components/WeatherCard/WeatherCard";
+import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import { usePathname, useRouter } from "next/navigation";
 
 const page = () => {

@@ -3,6 +3,7 @@
 import classes from "./moviecard.module.css";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import imageNotFound from "../../../public/image-not-found-icon.svg";
 
 const MovieCard = ({ movie, location }) => {
@@ -22,9 +23,9 @@ const MovieCard = ({ movie, location }) => {
       <p className={classes.paragraph}>{movie.desc}</p>
 
       {movie.poster_path === null ? (
-        <img
+        <Image
           className={classes.image}
-          src={imageNotFound.src}
+          src={imageNotFound}
           alt={movie.title}
         />
       ) : (

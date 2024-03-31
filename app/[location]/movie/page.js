@@ -29,7 +29,7 @@ const page = (props) => {
         setMovie({
           title: data.results[0].title,
           desc: data.results[0].overview,
-          img: `https://image.tmdb.org/t/p/w500${data.results[0].poster_path}`,
+          poster_path: data.results[0].poster_path,
         });
       })
       .catch((error) => {

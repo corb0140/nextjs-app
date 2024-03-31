@@ -15,7 +15,7 @@ const page = (props) => {
   console.log(location);
 
   useEffect(() => {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch data");
 
@@ -24,10 +24,21 @@ const page = (props) => {
       .then((data) => {
         console.log(data);
 
-        setDrink({
-          title: data.drinks[0].strDrink,
-          id: data.drinks[0].idDrink,
-        });
+        if (data.drinks === null) {
+          fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+            .then((response) => response.json())
+            .then((data) => {
+              setDrink({
+                title: data.drinks[0].strDrink,
+                id: data.drinks[0].idDrink,
+              });
+            });
+        } else {
+          setDrink({
+            title: data.drinks[0].strDrink,
+            id: data.drinks[0].idDrink,
+          });
+        }
       })
       .catch((error) => {
         console.error(error);

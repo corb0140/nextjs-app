@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const page = () => {
   const [weather, setWeather] = useState({});
 
   const pathname = usePathname();
   const decodedPathname = decodeURIComponent(pathname.split("/")[1]);
+  const router = useRouter();
 
   console.log(decodedPathname);
 
@@ -18,7 +19,9 @@ const page = () => {
       { cache: "force-cache" }
     )
       .then((response) => {
-        if (!response.ok) throw new Error("Failed to fetch data");
+        if (!response.ok) {
+          router.push("/404");
+        }
 
         return response.json();
       })
@@ -35,8 +38,8 @@ const page = () => {
           lon: data.coord.lon,
         });
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
+        console.error("city not found");
       });
   }, [decodedPathname]);
 

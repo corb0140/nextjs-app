@@ -1,11 +1,11 @@
 import "./globals.css";
-import Header from "./components/Header/Header";
+import MastHead from "./components/Masthead/MastHead";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="font-Montserrat">
-        <Header />
+        <MastHead />
         <main className="">{children}</main>
       </body>
     </html>

@@ -1,6 +1,6 @@
 "use client";
 
-import classes from "./drinkcard.module.css";
+import classes from "./drinkCard.module.css";
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";

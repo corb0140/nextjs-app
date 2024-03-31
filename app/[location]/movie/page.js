@@ -39,6 +39,9 @@ const page = (props) => {
 
   return (
     <div className="container max-w-full p-10">
+      <h2 className="pb-3">
+        Movies for <span className="text-teal-300">{query}</span>
+      </h2>
       <MovieCard movie={movie} location={location} />
     </div>
   );

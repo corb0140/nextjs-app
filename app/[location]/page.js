@@ -14,7 +14,7 @@ const page = () => {
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${decodedPathname}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${decodedPathname}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`,
       { cache: "force-cache" }
     )
       .then((response) => {
@@ -42,7 +42,7 @@ const page = () => {
 
   return (
     <div className="container max-w-full p-10">
-      <WeatherCard weather={weather} />
+      <WeatherCard weather={weather} pathname={decodedPathname} />
     </div>
   );
 };

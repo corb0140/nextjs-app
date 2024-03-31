@@ -1,19 +1,21 @@
 "use client";
 
-import classes from "./WeatherCard.module.css";
+import classes from "./weathercard.module.css";
 import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-const WeatherCard = ({ weather }) => {
+const WeatherCard = ({ weather, pathname }) => {
   const [showCard, setShowCard] = useState(true);
   const router = useRouter();
 
+  const home = () => {
+    router.push("/");
+  };
+
   const navigation = (route) => {
     router.push(
-      `/${encodeURIComponent(
-        `${weather.name},${weather.sys.country}`
-      )}/${route}?main=${weather.main}`
+      `/${encodeURIComponent(`${pathname}`)}/${route}?main=${weather.main}`
     );
   };
 
@@ -30,7 +32,7 @@ const WeatherCard = ({ weather }) => {
       ) : (
         <div className={classes.card}>
           <h1 className={classes.heading}>
-            {weather.name} {weather.sys.country}
+            {weather.name}, {weather.sys.country}
           </h1>
           <p className={classes.paragraph}>{weather.main}</p>
           <p className={classes.paragraph}>{weather.description}</p>
@@ -53,6 +55,9 @@ const WeatherCard = ({ weather }) => {
               onClick={() => navigation("movie")}
             >
               Perfect Movie
+            </button>
+            <button className={classes.button} onClick={home}>
+              New Location
             </button>
           </div>
         </div>

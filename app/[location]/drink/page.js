@@ -15,7 +15,7 @@ const page = (props) => {
   console.log(location);
 
   useEffect(() => {
-    fetch(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=snow`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch data");
 
@@ -37,7 +37,7 @@ const page = (props) => {
   return (
     <div className="container max-w-full p-10">
       <h2 className="pb-3">
-        Cocktails for <span className="text-teal-300">{query}</span>
+        Ingredients for <span className="text-teal-300">{query}</span>
       </h2>
       <DrinkCard drink={drink} location={location} />
     </div>

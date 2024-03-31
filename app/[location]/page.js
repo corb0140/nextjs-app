@@ -21,6 +21,7 @@ const page = () => {
       .then((response) => {
         if (!response.ok) {
           router.push("/404");
+          throw new Error("location not found");
         }
 
         return response.json();
@@ -38,8 +39,8 @@ const page = () => {
           lon: data.coord.lon,
         });
       })
-      .catch(() => {
-        console.error("city not found");
+      .catch((error) => {
+        console.error(error);
       });
   }, [decodedPathname]);
 

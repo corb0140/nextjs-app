@@ -54,7 +54,7 @@ const MovieCard = ({ movies, location }) => {
                 </div>
 
                 <Link
-                  href={`https://www.themoviedb.org/movie/${movie.id}-clouds?language=en-CA`}
+                  href={`https://www.themoviedb.org/movie/${movie.id}-${movie.title}?language=en-CA`}
                   target="_blank"
                   className={classes.button}
                 >

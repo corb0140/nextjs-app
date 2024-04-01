@@ -19,9 +19,6 @@
   background-color: #fff;
   cursor: pointer;
   transition: 0.4s;
-
-  height: 40rem;
-  width: auto;
 }
 
 .heading {
@@ -78,6 +75,7 @@
 @media screen and (min-width: 45em) {
   .cardList {
     --cols: 2;
+    height: 40rem;
   }
 }
 

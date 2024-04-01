@@ -6,9 +6,12 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import imageNotFound from "../../../public/image-not-found-icon.svg";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Loader from "../Loader/Loader";
 
-const MovieCard = ({ movies, location }) => {
+const MovieCard = ({ movies, location, isLoading }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   const back = (ev) => {
     ev.preventDefault();
@@ -19,6 +22,12 @@ const MovieCard = ({ movies, location }) => {
     ev.preventDefault();
     router.push("/");
   };
+
+  useEffect(() => {
+    if (movies.length > 0) {
+      setLoading(false);
+    }
+  }, [movies]);
 
   return (
     <>
@@ -31,6 +40,8 @@ const MovieCard = ({ movies, location }) => {
           New Location
         </button>
       </div>
+
+      {loading && <Loader />}
 
       <ul className={classes.cardList}>
         {movies.length > 0 &&

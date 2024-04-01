@@ -8,10 +8,13 @@ import { useSearchParams } from "next/navigation";
 const page = (props) => {
   const location = decodeURIComponent(props.params.location);
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
   const query = searchParams.get("main");
 
   useEffect(() => {
+    setIsLoading(true);
+
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&query=${query}&include_adult=false&language=en-US&page=1`
     )
@@ -25,6 +28,9 @@ const page = (props) => {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [query]);
 
@@ -36,7 +42,7 @@ const page = (props) => {
 
       <p className="pb-3">Click on card to see movie details</p>
 
-      <MovieCard movies={movies} location={location} />
+      <MovieCard movies={movies} location={location} isLoading={isLoading} />
     </div>
   );
 };

@@ -33,20 +33,23 @@ export default function Home() {
           className="container max-w-full flex flex-col gap-2 justify-center items-center"
         >
           <input
-            className="border-none outline-none p-2 text-black w-3/4"
+            className="border-none outline-none p-2 text-black w-3/4 md:w-2/3 lg:w-1/2"
             type="text"
             placeholder="Enter Your City"
             ref={cityRef}
             required
           />
           <input
-            className="border-none outline-none p-2 text-black w-3/4"
+            className="border-none outline-none p-2 text-black w-3/4 md:w-2/3 lg:w-1/2"
             type="text"
             placeholder="Enter Your Country"
             ref={countryRef}
             required
           />
-          <button className="bg-purple-950 text-white p-2 w-3/4" type="submit">
+          <button
+            className="bg-purple-950 text-white p-2 w-3/4 md:w-2/3 lg:w-1/2"
+            type="submit"
+          >
             Submit
           </button>
         </form>

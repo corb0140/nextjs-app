@@ -11,8 +11,6 @@ const page = () => {
   const decodedPathname = decodeURIComponent(pathname.split("/")[1]);
   const router = useRouter();
 
-  console.log(decodedPathname);
-
   useEffect(() => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${decodedPathname}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`,
@@ -27,8 +25,6 @@ const page = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-
         setWeather({
           name: data.name,
           sys: data.sys,

@@ -19,14 +19,12 @@
   background-color: #fff;
   cursor: pointer;
   transition: 0.4s;
-}
 
-.card:hover {
-  scale: 1.05;
+  height: 40rem;
+  width: auto;
 }
 
 .heading {
-  font-size: 2.5rem;
   font-weight: 700;
   color: #000;
   text-align: center;
@@ -36,17 +34,29 @@
   color: #000;
 }
 
+.imgContainer {
+  display: block;
+  height: 90%;
+  width: 100%;
+}
+
 .image {
-  width: 50%;
-  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
   border-radius: 0.5rem;
+}
+
+.imageNotFound {
+  height: 100%;
+  width: 100%;
 }
 
 .buttonContainer {
   display: flex;
-  align-items: end;
-  gap: 1rem;
-  flex-grow: 1;
+  gap: 0.5rem;
+  height: 10%;
+  padding-bottom: 0.5rem;
 }
 
 .button {

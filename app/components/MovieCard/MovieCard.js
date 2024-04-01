@@ -21,46 +21,50 @@ const MovieCard = ({ movies, location }) => {
   };
 
   return (
-    <ul className={classes.cardList}>
-      {movies.length > 0 &&
-        movies.map((movie) => {
-          return (
-            <Link
-              href={`https://www.themoviedb.org/movie/${movie.id}-clouds?language=en-CA`}
-              target="_blank"
-              key={movie.id}
-            >
-              <li className={classes.card}>
-                <h1 className={classes.heading}>{movie.title}</h1>
+    <>
+      <div className={classes.buttonContainer}>
+        <button className={classes.button} onClick={(ev) => back(ev)}>
+          Back to {location}
+        </button>
 
-                {movie.poster_path === null ? (
-                  <Image
-                    className={classes.image}
-                    src={imageNotFound}
-                    alt={movie.title}
-                  />
-                ) : (
-                  <img
-                    className={classes.image}
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                )}
+        <button className={classes.button} onClick={(ev) => home(ev)}>
+          New Location
+        </button>
+      </div>
 
-                <div className={classes.buttonContainer}>
-                  <button className={classes.button} onClick={(ev) => back(ev)}>
-                    Back to {location}
-                  </button>
-
-                  <button className={classes.button} onClick={(ev) => home(ev)}>
-                    New Location
-                  </button>
+      <ul className={classes.cardList}>
+        {movies.length > 0 &&
+          movies.map((movie) => {
+            return (
+              <li className={classes.card} key={movie.id}>
+                <div className={classes.imgContainer}>
+                  {movie.poster_path === null ? (
+                    <Image
+                      className={classes.imageNotFound}
+                      src={imageNotFound}
+                      alt={movie.title}
+                    />
+                  ) : (
+                    <img
+                      className={classes.image}
+                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  )}
                 </div>
+
+                <Link
+                  href={`https://www.themoviedb.org/movie/${movie.id}-clouds?language=en-CA`}
+                  target="_blank"
+                  className={classes.button}
+                >
+                  Click for details
+                </Link>
               </li>
-            </Link>
-          );
-        })}
-    </ul>
+            );
+          })}
+      </ul>
+    </>
   );
 };
 

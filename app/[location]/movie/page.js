@@ -11,9 +11,6 @@ const page = (props) => {
   const searchParams = useSearchParams();
   const query = searchParams.get("main");
 
-  console.log(query);
-  console.log(location);
-
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&query=${query}&include_adult=false&language=en-US&page=1`
@@ -24,7 +21,6 @@ const page = (props) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setMovies(data.results);
       })
       .catch((error) => {
@@ -39,6 +35,7 @@ const page = (props) => {
       </h2>
 
       <p className="pb-3">Click on card to see movie details</p>
+
       <MovieCard movies={movies} location={location} />
     </div>
   );

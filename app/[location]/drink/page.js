@@ -11,9 +11,6 @@ const page = (props) => {
   const searchParams = useSearchParams();
   const query = searchParams.get("main");
 
-  console.log(query);
-  console.log(location);
-
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
       .then((response) => {
@@ -22,8 +19,6 @@ const page = (props) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-
         if (data.drinks === null) {
           fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
             .then((response) => response.json())

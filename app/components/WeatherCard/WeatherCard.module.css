@@ -48,3 +48,15 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
+@media screen and (min-width: 45em) {
+  .card {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 70em) {
+  .card {
+    width: 40%;
+  }
+}

@@ -41,7 +41,7 @@ const page = (props) => {
   }, [query]);
 
   return (
-    <div className="container max-w-full p-10">
+    <div className="container max-w-full p-10 flex flex-col justify-center items-center">
       <h2 className="pb-3">
         Ingredients for <span className="text-teal-300">{query}</span>
       </h2>

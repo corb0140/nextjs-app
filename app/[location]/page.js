@@ -41,7 +41,7 @@ const page = () => {
   }, [decodedPathname]);
 
   return (
-    <div className="container max-w-full p-10">
+    <div className="container max-w-full p-10 flex justify-center items-center">
       <WeatherCard weather={weather} pathname={decodedPathname} />
     </div>
   );

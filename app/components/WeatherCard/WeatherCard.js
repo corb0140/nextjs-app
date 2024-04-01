@@ -1,6 +1,6 @@
 "use client";
 
-import classes from "./weatherCard.module.css";
+import classes from "./WeatherCard.module.css";
 import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";

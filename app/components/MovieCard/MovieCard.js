@@ -1,6 +1,6 @@
 "use client";
 
-import classes from "./moviecard.module.css";
+import classes from "./MovieCard.module.css";
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";

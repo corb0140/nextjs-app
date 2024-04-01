@@ -12,10 +12,12 @@ const page = () => {
   };
 
   return (
-    <div className="container mx-w-full flex-col flex justify-center items-center p-10">
+    <div className="container max-w-full flex flex-col  justify-center items-center p-10">
       <h1 className="text-2xl">404 Location not found</h1>
 
-      <Image src={robot} alt="image of cute robot" />
+      <div className="block w-96">
+        <Image src={robot} alt="image of cute robot" className="w-full" />
+      </div>
 
       <button
         className="bg-purple-950 px-16 py-3 cursor-pointer"

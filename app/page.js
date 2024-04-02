@@ -1,28 +1,38 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const cityRef = useRef(null);
-  const countryRef = useRef(null);
-  const router = useRouter();
+  const [value, setValue] = useState("");
+  const [location, setLocation] = useState("");
 
-  const navigation = () => {
-    router.push(
-      `/${encodeURIComponent(
-        `${cityRef.current.value},  ${countryRef.current.value}`
-      )}`
-    );
-  };
+  const router = useRouter();
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
 
-    navigation();
+    if (value.includes(",")) {
+      setLocation(value);
+    } else {
+      alert("Please enter a valid input (city, country)");
+      return;
+    }
 
     ev.target.reset();
   };
+
+  const onChange = (ev) => {
+    setValue(ev.target.value);
+  };
+
+  useEffect(() => {
+    router.push(`/${encodeURIComponent(location)}`);
+  }, [location]);
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <>
@@ -35,20 +45,16 @@ export default function Home() {
           <input
             className="border-none outline-none p-2 text-black w-3/4 md:w-2/3 lg:w-1/2"
             type="text"
-            placeholder="Enter Your City"
-            ref={cityRef}
+            placeholder="city, country"
+            value={value}
+            onChange={onChange}
             required
           />
-          <input
-            className="border-none outline-none p-2 text-black w-3/4 md:w-2/3 lg:w-1/2"
-            type="text"
-            placeholder="Enter Your Country"
-            ref={countryRef}
-            required
-          />
+
           <button
             className="bg-purple-950 text-white p-2 w-3/4 md:w-2/3 lg:w-1/2"
             type="submit"
+            disabled={value === "" ? true : false}
           >
             Submit
           </button>

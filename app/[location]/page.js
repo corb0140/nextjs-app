@@ -6,25 +6,22 @@ import { usePathname, useRouter } from "next/navigation";
 
 const page = () => {
   const [weather, setWeather] = useState({});
+  const router = useRouter();
 
   const pathname = usePathname();
   const decodedPathname = decodeURIComponent(pathname.split("/")[1]);
-  const router = useRouter();
 
   useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${decodedPathname}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`,
-      { cache: "force-cache" }
-    )
+    fetch(`http://localhost:3000/api/weather?${decodedPathname}`)
       .then((response) => {
         if (!response.ok) {
           router.push("/404");
-          throw new Error("location not found");
+          throw new Error("Location not found");
         }
-
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         setWeather({
           name: data.name,
           sys: data.sys,

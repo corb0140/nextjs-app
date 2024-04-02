@@ -11,7 +11,7 @@ export default function Home() {
   const navigation = () => {
     router.push(
       `/${encodeURIComponent(
-        `${cityRef.current.value}, ${countryRef.current.value}`
+        `${cityRef.current.value},  ${countryRef.current.value}`
       )}`
     );
   };

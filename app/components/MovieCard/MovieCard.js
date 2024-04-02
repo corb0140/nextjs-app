@@ -25,7 +25,7 @@ const MovieCard = ({ movies, location, isLoading }) => {
 
   useEffect(() => {
     if (movies.length > 0) {
-      setLoading(false);
+      setLoading(isLoading);
     }
   }, [movies]);
 

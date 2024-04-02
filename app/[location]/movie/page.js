@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import MovieCard from "../../components/MovieCard/MovieCard";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const page = (props) => {
   const location = decodeURIComponent(props.params.location);
@@ -11,15 +11,17 @@ const page = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
   const query = searchParams.get("main");
+  const router = useRouter();
 
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&query=${query}&include_adult=false&language=en-US&page=1`
-    )
+    fetch(`http://localhost:3000/api/movies?${query}`)
       .then((response) => {
-        if (!response.ok) throw new Error("Failed to fetch data");
+        if (!response.ok) {
+          router.push("/404");
+          throw new Error("Failed to fetch data");
+        }
 
         return response.json();
       })

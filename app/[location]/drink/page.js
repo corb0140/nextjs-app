@@ -3,22 +3,27 @@
 import { useEffect, useState } from "react";
 import DrinkCard from "../../components/DrinkCard/DrinkCard";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const page = (props) => {
   let location = decodeURIComponent(props.params.location);
   const [drink, setDrink] = useState({});
+  const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("main");
 
   useEffect(() => {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
+    fetch(`http://localhost:3000/api/drinks?${query}`)
       .then((response) => {
-        if (!response.ok) throw new Error("Failed to fetch data");
+        if (!response.ok) {
+          router.push("/404");
+          throw new Error("Failed to fetch data");
+        }
 
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         if (data.drinks === null) {
           fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
             .then((response) => response.json())

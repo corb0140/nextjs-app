@@ -1,42 +1,23 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { redirect } from "next/navigation";
 
 import MovieCard from "../../components/MovieCard/MovieCard";
-import { useSearchParams, useRouter } from "next/navigation";
 
-const page = (props) => {
-  const router = useRouter();
+const page = async ({ params, searchParams }) => {
+  let { location } = params;
+  const decodedLocation = decodeURIComponent(location);
+  let search = new URLSearchParams(searchParams);
 
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const query = search.get("main");
 
-  const location = decodeURIComponent(props.params.location);
-  const searchParams = useSearchParams();
-  const query = searchParams.get("main");
+  const base = process.env.BASE;
 
-  useEffect(() => {
-    setIsLoading(true);
+  const response = await fetch(`${base}/api/movies?q=${query}`);
 
-    fetch(`http://localhost:3000/api/movies?${query}`)
-      .then((response) => {
-        if (!response.ok) {
-          router.push("/404");
-          throw new Error("Failed to fetch data");
-        }
+  if (!response.ok) {
+    redirect("/404");
+  }
 
-        return response.json();
-      })
-      .then((data) => {
-        setMovies(data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [query]);
+  const data = await response.json();
 
   return (
     <div className="container max-w-full p-10">
@@ -44,7 +25,7 @@ const page = (props) => {
         Movies for <span className="text-teal-300">{query}</span>
       </h2>
 
-      <MovieCard movies={movies} location={location} isLoading={isLoading} />
+      <MovieCard movies={data.results} location={decodedLocation} />
     </div>
   );
 };

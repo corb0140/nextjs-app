@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
 
 const page = async ({ params }) => {
-  const { location } = params;
+  let { location } = params;
   const decodedLocation = decodeURIComponent(location);
 
   const base = process.env.BASE;

@@ -18,7 +18,9 @@ const WeatherCard = ({ weather, location }) => {
 
   const navigation = (route) => {
     router.push(
-      `/${encodeURIComponent(`${location}`)}/${route}?main=${weather.main}`
+      `/${encodeURIComponent(`${location}`)}/${route}?main=${
+        data.weather[0].main
+      }`
     );
   };
 

@@ -3,13 +3,15 @@
 import classes from "./MovieCard.module.css";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import imageNotFound from "../../../public/image-not-found-icon.svg";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import Loader from "../Loader/Loader";
 
-const MovieCard = ({ movies, location, isLoading }) => {
+import Image from "next/image";
+import Link from "next/link";
+
+import Loader from "../Loader/Loader";
+import imageNotFound from "../../../public/image-not-found-icon.svg";
+
+const MovieCard = ({ movies, location }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +27,7 @@ const MovieCard = ({ movies, location, isLoading }) => {
 
   useEffect(() => {
     if (movies.length > 0) {
-      setLoading(isLoading);
+      setLoading(false);
     }
   }, [movies]);
 

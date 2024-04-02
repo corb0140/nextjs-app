@@ -9,6 +9,9 @@ const WeatherCard = ({ weather, location }) => {
   const [showCard, setShowCard] = useState(true);
   const router = useRouter();
 
+  const data = weather.data;
+  console.log(data);
+
   const home = () => {
     router.push("/");
   };
@@ -20,10 +23,10 @@ const WeatherCard = ({ weather, location }) => {
   };
 
   useEffect(() => {
-    if (weather.name) {
+    if (data.name) {
       setShowCard(false);
     }
-  }, [weather]);
+  }, [data.name]);
 
   return (
     <>
@@ -32,15 +35,15 @@ const WeatherCard = ({ weather, location }) => {
       ) : (
         <div className={classes.card}>
           <h1 className={classes.heading}>
-            {weather.name}, {weather.sys.country}
+            {data.name}, {data.sys.country}
           </h1>
-          <p className={classes.paragraph}>{weather.main}</p>
-          <p className={classes.paragraph}>{weather.description}</p>
-          <p className={classes.paragraph}>Temperature: {weather.temp}°C</p>
+          <p className={classes.paragraph}>{data.weather[0].main}</p>
+          <p className={classes.paragraph}>{data.weather[0].description}</p>
+          <p className={classes.paragraph}>Temperature: {data.main.temp}°C</p>
 
           <div className={classes.coordinates}>
-            <span className={classes.paragraph}>lat: {weather.lat}</span>
-            <span className={classes.paragraph}>lon: {weather.lon}</span>
+            <span className={classes.paragraph}>lat: {data.coord.lat}</span>
+            <span className={classes.paragraph}>lon: {data.coord.lon}</span>
           </div>
 
           <div className={classes.buttonContainer}>

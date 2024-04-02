@@ -1,46 +1,24 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { useState, useEffect } from "react";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
-import { useRouter } from "next/navigation";
 
-const page = ({ params }) => {
+const page = async ({ params }) => {
   const { location } = params;
   const decodedLocation = decodeURIComponent(location);
 
-  const router = useRouter();
+  const base = process.env.BASE;
 
-  const [weather, setWeather] = useState({});
+  const response = await fetch(`${base}/api/weather?locale=${decodedLocation}`);
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/api/weather?${decodedLocation}`)
-      .then((response) => {
-        if (!response.ok) {
-          router.push("/404");
-          throw new Error("Location not found");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setWeather({
-          name: data.name,
-          sys: data.sys,
-          main: data.weather[0].main,
-          description: data.weather[0].description,
-          temp: data.main.temp,
-          lat: data.coord.lat,
-          lon: data.coord.lon,
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [decodedLocation]);
+  if (!response.ok) {
+    redirect("/404");
+  }
+
+  const data = await response.json();
 
   return (
     <div className="container max-w-full p-10 flex justify-center items-center">
-      <WeatherCard weather={weather} location={decodedLocation} />
+      <WeatherCard weather={{ data }} location={decodedLocation} />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-const WeatherCard = ({ weather, pathname }) => {
+const WeatherCard = ({ weather, location }) => {
   const [showCard, setShowCard] = useState(true);
   const router = useRouter();
 
@@ -15,7 +15,7 @@ const WeatherCard = ({ weather, pathname }) => {
 
   const navigation = (route) => {
     router.push(
-      `/${encodeURIComponent(`${pathname}`)}/${route}?main=${weather.main}`
+      `/${encodeURIComponent(`${location}`)}/${route}?main=${weather.main}`
     );
   };
 

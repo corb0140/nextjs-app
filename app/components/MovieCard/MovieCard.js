@@ -64,6 +64,8 @@ const MovieCard = ({ movies, location, isLoading }) => {
                   )}
                 </div>
 
+                <h1 className={classes.heading}>{movie.title}</h1>
+
                 <Link
                   href={`https://www.themoviedb.org/movie/${movie.id}-${movie.title}?language=en-CA`}
                   target="_blank"

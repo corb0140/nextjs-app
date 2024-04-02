@@ -2,18 +2,18 @@
 
 import { useState, useEffect } from "react";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const page = ({ params }) => {
+  const { location } = params;
+  const decodedLocation = decodeURIComponent(location);
+
   const router = useRouter();
 
   const [weather, setWeather] = useState({});
 
-  const pathname = usePathname();
-  const decodedPathname = decodeURIComponent(pathname.split("/")[1]);
-
   useEffect(() => {
-    fetch(`http://localhost:3000/api/weather?${decodedPathname}`)
+    fetch(`http://localhost:3000/api/weather?${decodedLocation}`)
       .then((response) => {
         if (!response.ok) {
           router.push("/404");
@@ -36,11 +36,11 @@ const page = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, [decodedPathname]);
+  }, [decodedLocation]);
 
   return (
     <div className="container max-w-full p-10 flex justify-center items-center">
-      <WeatherCard weather={weather} pathname={decodedPathname} />
+      <WeatherCard weather={weather} location={decodedLocation} />
     </div>
   );
 };

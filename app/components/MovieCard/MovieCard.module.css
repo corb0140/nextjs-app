@@ -21,9 +21,9 @@
 }
 
 .heading {
-  font-weight: 700;
+  font-weight: 500;
   color: #000;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .paragraph {
@@ -74,7 +74,6 @@
 @media screen and (min-width: 45em) {
   .cardList {
     --cols: 2;
-    /* height: 40rem; */
   }
 }
 

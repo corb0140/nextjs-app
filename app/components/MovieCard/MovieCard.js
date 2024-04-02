@@ -58,7 +58,7 @@ const MovieCard = ({ movies, location, isLoading }) => {
                   ) : (
                     <img
                       className={classes.image}
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                       alt={movie.title}
                     />
                   )}
@@ -69,7 +69,7 @@ const MovieCard = ({ movies, location, isLoading }) => {
                   target="_blank"
                   className={classes.button}
                 >
-                  Click for details
+                  Click for Details
                 </Link>
               </li>
             );

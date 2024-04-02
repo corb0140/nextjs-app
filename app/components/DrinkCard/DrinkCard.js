@@ -20,6 +20,8 @@ const DrinkCard = ({ drink, location }) => {
     <div className={classes.card}>
       <h1 className={classes.heading}>{drink.title}</h1>
 
+      <img className={classes.image} src={drink.src} alt={drink.title} />
+
       <Link
         className={classes.ingredientsLink}
         href={`https://www.thecocktaildb.com/drink/${drink.id}`}

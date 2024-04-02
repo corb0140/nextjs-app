@@ -6,9 +6,11 @@ export async function GET(request) {
   const res = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${decodedQuery}`,
     {
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        accept: "application/json",
       },
+      next: { revalidate: 60 },
     }
   );
 
@@ -18,5 +20,11 @@ export async function GET(request) {
 
   const data = await res.json();
 
-  return Response.json(data);
+  return new Response(JSON.stringify(data), {
+    headers: {
+      "content-type": "application/json",
+      "access-control-allow-methods": "GET,HEAD",
+      "access-control-allow-origin": "*",
+    },
+  });
 }

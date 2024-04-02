@@ -31,6 +31,7 @@ const page = (props) => {
               setDrink({
                 title: data.drinks[0].strDrink,
                 id: data.drinks[0].idDrink,
+                src: data.drinks[0].strDrinkThumb,
               });
             });
         } else {

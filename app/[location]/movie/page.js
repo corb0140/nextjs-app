@@ -42,8 +42,6 @@ const page = (props) => {
         Movies for <span className="text-teal-300">{query}</span>
       </h2>
 
-      <p className="pb-3">Click on card to see movie details</p>
-
       <MovieCard movies={movies} location={location} isLoading={isLoading} />
     </div>
   );

@@ -17,6 +17,13 @@
   text-align: center;
 }
 
+.image {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
 .ingredientsLink {
   color: #000;
   border: 1px solid #000;

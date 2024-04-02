@@ -74,7 +74,7 @@
 @media screen and (min-width: 45em) {
   .cardList {
     --cols: 2;
-    height: 40rem;
+    /* height: 40rem; */
   }
 }
 

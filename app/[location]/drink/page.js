@@ -33,23 +33,10 @@ const page = (props) => {
           fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
             .then((response) => response.json())
             .then((data) => {
-              setDrink(
-                data.drinks
-                //   {
-                //   title: data.drinks[0].strDrink,
-                //   id: data.drinks[0].idDrink,
-                //   src: data.drinks[0].strDrinkThumb,
-                // }
-              );
+              setDrink(data.drinks);
             });
         } else {
-          setDrink(
-            data.drinks
-            //   {
-            //   title: data.drinks[0].strDrink,
-            //   id: data.drinks[0].idDrink,
-            // }
-          );
+          setDrink(data.drinks);
         }
       })
       .catch((error) => {

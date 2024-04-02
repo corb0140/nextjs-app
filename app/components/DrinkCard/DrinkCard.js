@@ -10,6 +10,7 @@ import Loader from "../Loader/Loader";
 
 const DrinkCard = ({ drinks, location, isLoading }) => {
   const router = useRouter();
+
   const [loading, setLoading] = useState(true);
 
   const back = () => {

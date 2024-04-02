@@ -6,12 +6,14 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import { useSearchParams, useRouter } from "next/navigation";
 
 const page = (props) => {
-  const location = decodeURIComponent(props.params.location);
+  const router = useRouter();
+
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const location = decodeURIComponent(props.params.location);
   const searchParams = useSearchParams();
   const query = searchParams.get("main");
-  const router = useRouter();
 
   useEffect(() => {
     setIsLoading(true);

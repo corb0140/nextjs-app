@@ -5,8 +5,9 @@ import WeatherCard from "../components/WeatherCard/WeatherCard";
 import { usePathname, useRouter } from "next/navigation";
 
 const page = () => {
-  const [weather, setWeather] = useState({});
   const router = useRouter();
+
+  const [weather, setWeather] = useState({});
 
   const pathname = usePathname();
   const decodedPathname = decodeURIComponent(pathname.split("/")[1]);

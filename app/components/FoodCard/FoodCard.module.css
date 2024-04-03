@@ -22,9 +22,9 @@
 }
 
 .heading {
-  font-size: 1.35rem;
   font-weight: 500;
   color: #000;
+  height: 100%;
 }
 
 .image {

@@ -22,7 +22,8 @@ const page = async ({ params, searchParams }) => {
   return (
     <div className="container max-w-full p-10">
       <h2 className="pb-3 text-black">
-        Movies for <span className="text-teal-300">{query}</span>
+        Movies for:{" "}
+        <span className="text-purple-950 pl-1 font-semibold">{query}</span>
       </h2>
 
       <p className="pb-3 text-black font-semibold">

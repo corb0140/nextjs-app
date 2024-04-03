@@ -10,7 +10,7 @@ export default function Home() {
         className="container max-w-full flex flex-col gap-2 justify-center items-center"
       >
         <input
-          className="border-none outline-none p-2 text-black w-3/4 md:w-2/3 lg:w-1/2"
+          className="border-[1px] border-purple-950 outline-none p-2 text-black w-3/4 md:w-2/3 lg:w-1/2"
           type="text"
           placeholder="city, country"
           name="location"

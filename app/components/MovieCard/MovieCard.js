@@ -49,33 +49,30 @@ const MovieCard = ({ movies, location }) => {
         {movies.length > 0 &&
           movies.map((movie) => {
             return (
-              <li className={classes.card} key={movie.id}>
-                <div className={classes.imgContainer}>
-                  {movie.poster_path === null ? (
-                    <Image
-                      className={classes.imageNotFound}
-                      src={imageNotFound}
-                      alt={movie.title}
-                    />
-                  ) : (
-                    <img
-                      className={classes.image}
-                      src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                      alt={movie.title}
-                    />
-                  )}
-                </div>
-
-                <h1 className={classes.heading}>{movie.title}</h1>
-
-                <Link
-                  href={`https://www.themoviedb.org/movie/${movie.id}-${movie.title}?language=en-CA`}
-                  target="_blank"
-                  className={classes.button}
-                >
-                  Click for Details
-                </Link>
-              </li>
+              <Link
+                href={`https://www.themoviedb.org/movie/${movie.id}-${movie.title}?language=en-CA`}
+                target="_blank"
+                key={movie.id}
+              >
+                <li className={classes.card}>
+                  <div className={classes.imageContainer}>
+                    {movie.poster_path === null ? (
+                      <Image
+                        className={classes.imageNotFound}
+                        src={imageNotFound}
+                        alt={movie.title}
+                      />
+                    ) : (
+                      <img
+                        className={classes.image}
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                      />
+                    )}
+                  </div>
+                  <h1 className={classes.heading}>{movie.title}</h1>
+                </li>
+              </Link>
             );
           })}
       </ul>

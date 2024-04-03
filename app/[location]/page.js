@@ -6,9 +6,11 @@ const page = async ({ params }) => {
   let { location } = params;
   const decodedLocation = decodeURIComponent(location);
 
-  const base = process.env.BASE;
+  // const base = process.env.BASE;
 
-  const response = await fetch(`${base}/api/weather?locale=${decodedLocation}`);
+  const response = await fetch(
+    `${process.env.BASE}/api/weather?locale=${decodedLocation}`
+  );
 
   if (!response.ok) {
     redirect("/404");

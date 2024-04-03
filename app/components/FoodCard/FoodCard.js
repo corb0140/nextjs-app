@@ -1,17 +1,20 @@
 "use client";
 
-import classes from "./DrinkCard.module.css";
+import classes from "./FoodCard.module.css";
 
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+
+import Link from "next/link";
 
 import Loader from "../Loader/Loader";
 
-const DrinkCard = ({ drinks, location, isLoading }) => {
+const FoodCard = ({ food, location }) => {
   const router = useRouter();
-
   const [loading, setLoading] = useState(true);
+
+  const data = food.hits;
+  console.log(data);
 
   const back = () => {
     router.back();
@@ -22,10 +25,10 @@ const DrinkCard = ({ drinks, location, isLoading }) => {
   };
 
   useEffect(() => {
-    if (drinks.length > 0) {
-      setLoading(isLoading);
+    if (data.length > 0) {
+      setLoading(false);
     }
-  }, [drinks]);
+  }, [data]);
 
   return (
     <>
@@ -42,21 +45,22 @@ const DrinkCard = ({ drinks, location, isLoading }) => {
       {loading && <Loader />}
 
       <ul className={classes.cardList}>
-        {drinks.length > 0 &&
-          drinks.map((drink) => {
+        {data.length > 0 &&
+          data.map((food) => {
+            const id = crypto.randomUUID();
             return (
-              <div className={classes.card} key={drink.idDrink}>
-                <h1 className={classes.heading}>{drink.strDrink}</h1>
+              <div className={classes.card} key={id}>
+                <h1 className={classes.heading}>{food.recipe.label}</h1>
 
                 <img
                   className={classes.image}
-                  src={drink.strDrinkThumb}
-                  alt={drink.strDrink}
+                  src={food.recipe.image}
+                  alt={food.recipe.label}
                 />
 
                 <Link
                   className={classes.ingredientsLink}
-                  href={`https://www.thecocktaildb.com/drink/${drink.idDrink}`}
+                  href={food.recipe.url}
                   target="_blank"
                 >
                   Click to see ingredients
@@ -69,4 +73,4 @@ const DrinkCard = ({ drinks, location, isLoading }) => {
   );
 };
 
-export default DrinkCard;
+export default FoodCard;

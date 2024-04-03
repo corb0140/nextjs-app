@@ -1,10 +1,11 @@
 export async function GET(request) {
   const url = new URL(request.url);
-  const query = new URLSearchParams(url.search);
-  const locale = query.get("q");
+  const searchParam = new URLSearchParams(url.search);
+  const query = searchParam.get("q");
+  const apiKey = process.env.MOVIE_API_KEY;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${locale}&include_adult=false&language=en-US&page=1`,
+    `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&include_adult=false&language=en-US&page=1`,
     {
       method: "GET",
       headers: {

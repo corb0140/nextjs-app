@@ -10,7 +10,6 @@ const WeatherCard = ({ weather, location }) => {
   const router = useRouter();
 
   const data = weather.data;
-  console.log(data);
 
   const home = () => {
     router.push("/");
@@ -51,15 +50,15 @@ const WeatherCard = ({ weather, location }) => {
           <div className={classes.buttonContainer}>
             <button
               className={classes.button}
-              onClick={() => navigation("drink")}
+              onClick={() => navigation("food")}
             >
-              Perfect Drink
+              Perfect Foods
             </button>
             <button
               className={classes.button}
               onClick={() => navigation("movie")}
             >
-              Perfect Movie
+              Perfect Movies
             </button>
             <button className={classes.button} onClick={home}>
               New Location

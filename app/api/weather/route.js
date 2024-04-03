@@ -2,9 +2,10 @@ export async function GET(request) {
   const url = new URL(request.url);
   const query = new URLSearchParams(url.search);
   const locale = query.get("locale");
+  const apiKey = process.env.WEATHER_API_KEY;
 
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${locale}&appid=${process.env.WEATHER_API_KEY}&units=metric`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${locale}&appid=${apiKey}&units=metric`,
     {
       method: "GET",
       headers: {

@@ -8,6 +8,10 @@ const page = () => {
   const router = useRouter();
 
   const back = () => {
+    router.back();
+  };
+
+  const home = () => {
     router.push("/");
   };
 
@@ -19,12 +23,21 @@ const page = () => {
         <Image src={robot} alt="image of cute robot" className="w-full" />
       </div>
 
-      <button
-        className="bg-purple-950 px-16 py-3 cursor-pointer"
-        onClick={back}
-      >
-        back to homepage
-      </button>
+      <div className="flex flex-col gap-2">
+        <button
+          className="bg-purple-950 px-16 py-3 cursor-pointer"
+          onClick={back}
+        >
+          Go Back
+        </button>
+
+        <button
+          className="bg-purple-950 px-16 py-3 cursor-pointer"
+          onClick={home}
+        >
+          New Location
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+// import { revalidatePath } from "next/cache";
 
 export async function handleForm(formData) {
   "use server";
@@ -10,5 +10,5 @@ export async function handleForm(formData) {
 
   redirect(`/${encodeURIComponent(location)}`);
 
-  revalidatePath("/");
+  // revalidatePath("/");
 }

@@ -9,9 +9,9 @@ const page = async ({ params, searchParams }) => {
 
   const query = search.get("main");
 
-  const base = process.env.BASE;
+  // const base = process.env.BASE;
 
-  const response = await fetch(`${base}/api/movies?q=${query}`);
+  const response = await fetch(`http://localhost:3000/api/movies?q=${query}`);
 
   if (!response.ok) {
     redirect("/404");

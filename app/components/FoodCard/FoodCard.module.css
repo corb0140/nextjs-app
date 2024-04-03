@@ -36,15 +36,14 @@
 
 .ingredientsLink {
   color: #000;
-  border: 1px solid #000;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0.8rem 0.5rem;
   cursor: pointer;
   transition: 0.4s ease;
 }
 
 .ingredientsLink:hover {
-  background-color: #000;
-  color: #fff;
+  box-shadow: 2px 2px 4px rgb(59 7 100);
 }
 
 .buttonContainer {

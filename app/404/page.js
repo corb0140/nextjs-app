@@ -25,14 +25,14 @@ const page = () => {
 
       <div className="flex flex-col gap-2">
         <button
-          className="bg-purple-950 px-16 py-3 cursor-pointer"
+          className="bg-purple-950 px-16 py-3 text-white cursor-pointer"
           onClick={back}
         >
           Go Back
         </button>
 
         <button
-          className="bg-purple-950 px-16 py-3 cursor-pointer"
+          className="bg-purple-950 px-16 py-3 text-white cursor-pointer"
           onClick={home}
         >
           New Location

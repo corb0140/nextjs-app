@@ -5,11 +5,10 @@ import classes from "./MovieCard.module.css";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import Loader from "../Loader/Loader";
-import imageNotFound from "../../../public/image-not-found-icon.svg";
+import imageNotFound from "@/public/image-not-found-icon.svg";
 
 const MovieCard = ({ movies, location }) => {
   const router = useRouter();
@@ -57,9 +56,9 @@ const MovieCard = ({ movies, location }) => {
                 <li className={classes.card}>
                   <div className={classes.imageContainer}>
                     {movie.poster_path === null ? (
-                      <Image
+                      <img
                         className={classes.imageNotFound}
-                        src={imageNotFound}
+                        src={imageNotFound.src}
                         alt={movie.title}
                       />
                     ) : (

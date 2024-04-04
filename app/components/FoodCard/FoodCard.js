@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import Loader from "../Loader/Loader";
+import imageNotFound from "@/public/image-not-found-icon.svg";
 
 const FoodCard = ({ food, location }) => {
   const router = useRouter();
@@ -52,11 +53,19 @@ const FoodCard = ({ food, location }) => {
               <div className={classes.card} key={id}>
                 <h1 className={classes.heading}>{food.recipe.label}</h1>
 
-                <img
-                  className={classes.image}
-                  src={food.recipe.image}
-                  alt={food.recipe.label}
-                />
+                {food.recipe.image === null ? (
+                  <img
+                    className={classes.imageNotFound}
+                    src={imageNotFound.src}
+                    alt={food.recipe.label}
+                  />
+                ) : (
+                  <img
+                    className={classes.image}
+                    src={food.recipe.image}
+                    alt={food.recipe.label}
+                  />
+                )}
 
                 <Link
                   className={classes.ingredientsLink}

@@ -19,11 +19,6 @@ const page = async ({ params, searchParams }) => {
 
   let data = await response.json();
 
-  setTimeout(() => {
-    data = null;
-    console.log(data);
-  }, 3000);
-
   return (
     <div className="container max-w-full p-10 flex flex-col justify-center">
       <h2 className="pb-3">

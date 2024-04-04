@@ -10,8 +10,8 @@ export async function GET(request) {
       method: "GET",
       headers: {
         accept: "application/json",
-        "Cache-Control": "no-cache",
       },
+      next: { revalidate: 30 },
     }
   );
 
@@ -26,7 +26,6 @@ export async function GET(request) {
       "content-type": "application/json",
       "access-control-allow-methods": "GET,HEAD",
       "access-control-allow-origin": "*",
-      "Cache-Control": "no-cache",
     },
     status: 200,
   });

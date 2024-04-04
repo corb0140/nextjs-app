@@ -11,8 +11,8 @@ export async function GET(request) {
       method: "GET",
       headers: {
         accept: "application/json",
+        "Cache-Control": "no-cache",
       },
-      next: { revalidate: 1 },
     }
   );
 

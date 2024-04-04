@@ -17,10 +17,11 @@ const page = async ({ params, searchParams }) => {
     redirect("/404");
   }
 
-  const data = await response.json();
+  let data = await response.json();
 
   setTimeout(() => {
     data = null;
+    console.log(data);
   }, 3000);
 
   return (

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import MovieCard from "../../components/MovieCard/MovieCard";
+import MovieCard from "@/app/components/MovieCard/MovieCard";
 
 const page = async ({ params, searchParams }) => {
   let { location } = params;

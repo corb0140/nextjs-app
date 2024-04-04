@@ -31,6 +31,8 @@
 .buttonContainer {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .button {
@@ -46,6 +48,7 @@
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+  width: 50%;
   transition: background-color 0.3s;
 }
 
@@ -53,10 +56,18 @@
   .card {
     width: 60%;
   }
+
+  .buttonContainer {
+    flex-wrap: nowrap;
+  }
+
+  .button {
+    width: auto;
+  }
 }
 
 @media screen and (min-width: 70em) {
   .card {
-    width: 40%;
+    width: 50%;
   }
 }

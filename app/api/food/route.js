@@ -27,6 +27,7 @@ export async function GET(request) {
       "content-type": "application/json",
       "access-control-allow-methods": "GET,HEAD",
       "access-control-allow-origin": "*",
+      "Cache-Control": "no-cache",
     },
     status: 200,
   });

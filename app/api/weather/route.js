@@ -11,7 +11,7 @@ export async function GET(request) {
       headers: {
         accept: "application/json",
       },
-      next: { revalidate: 60 },
+      next: { revalidate: 1 },
     }
   );
 
@@ -24,18 +24,6 @@ export async function GET(request) {
   return new Response(JSON.stringify(data), {
     headers: {
       "content-type": "application/json",
-      "access-control-allow-methods": "GET,HEAD",
-      "access-control-allow-origin": "*",
-    },
-    status: 200,
-  });
-}
-
-export async function HEAD(request) {
-  return new Response(null, {
-    headers: {
-      "content-type": "application/json",
-      "content-length": 868,
       "access-control-allow-methods": "GET,HEAD",
       "access-control-allow-origin": "*",
     },

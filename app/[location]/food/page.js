@@ -21,9 +21,9 @@ const page = async ({ params, searchParams }) => {
 
   return (
     <div className="container max-w-full p-10 flex flex-col justify-center">
-      <h2 className="pb-3">
+      <h2 className="pb-3 text-white">
         Recipes for:
-        <span className="text-purple-950 pl-1 font-semibold">{query}</span>
+        <span className="text-teal-200 pl-1 font-semibold">{query}</span>
       </h2>
       <FoodCard food={data} location={decodedLocation} />
     </div>

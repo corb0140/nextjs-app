@@ -21,12 +21,12 @@ const page = async ({ params, searchParams }) => {
 
   return (
     <div className="container max-w-full p-10">
-      <h2 className="pb-3 text-black">
+      <h2 className="pb-3 text-white">
         Movies for:
-        <span className="text-purple-950 pl-1 font-semibold">{query}</span>
+        <span className="text-teal-200 pl-1 font-semibold">{query}</span>
       </h2>
 
-      <p className="pb-3 text-black font-semibold">
+      <p className="pb-3 text-white font-semibold">
         *Click on card to get movie detail*
       </p>
 

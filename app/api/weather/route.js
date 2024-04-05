@@ -15,7 +15,7 @@ export async function GET(request) {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data from the API");
+    throw new Error("Failed to fetch data from openweathermap API");
   }
 
   const data = await res.json();

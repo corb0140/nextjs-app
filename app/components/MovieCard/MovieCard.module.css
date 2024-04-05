@@ -23,7 +23,7 @@
 }
 
 .card:hover {
-  box-shadow: 2px 2px 5px rgb(59 7 100);
+  scale: 1.02;
 }
 
 .heading {

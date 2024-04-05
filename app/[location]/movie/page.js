@@ -27,7 +27,7 @@ const page = async ({ params, searchParams }) => {
       </h2>
 
       <p className="pb-3 text-white font-semibold">
-        *Click on card to get movie detail*
+        *Click on card to get movie details*
       </p>
 
       <MovieCard movies={data.results} location={decodedLocation} />

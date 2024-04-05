@@ -7,10 +7,6 @@ import robot from "@/public/vecteezy_ai-generated-small-robots-futuristic-marvel
 const page = () => {
   const router = useRouter();
 
-  const back = () => {
-    router.back();
-  };
-
   const home = () => {
     router.push("/");
   };
@@ -26,16 +22,9 @@ const page = () => {
       <div className="flex flex-col gap-2">
         <button
           className="bg-purple-950 px-16 py-3 text-white cursor-pointer"
-          onClick={back}
-        >
-          Go Back
-        </button>
-
-        <button
-          className="bg-purple-950 px-16 py-3 text-white cursor-pointer"
           onClick={home}
         >
-          New Location
+          Go Home
         </button>
       </div>
     </div>

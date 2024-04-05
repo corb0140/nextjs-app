@@ -45,39 +45,43 @@ const FoodCard = ({ food, location }) => {
 
       {loading && <Loader />}
 
-      <ul className={classes.cardList}>
-        {data.length > 0 &&
-          data.map((food) => {
-            const id = crypto.randomUUID();
-            return (
-              <div className={classes.card} key={id}>
-                <h1 className={classes.heading}>{food.recipe.label}</h1>
+      {loading === true ? (
+        ""
+      ) : (
+        <ul className={classes.cardList}>
+          {data.length > 0 &&
+            data.map((food) => {
+              const id = crypto.randomUUID();
+              return (
+                <div className={classes.card} key={id}>
+                  <h1 className={classes.heading}>{food.recipe.label}</h1>
 
-                {food.recipe.image === null ? (
-                  <img
-                    className={classes.imageNotFound}
-                    src={imageNotFound.src}
-                    alt={food.recipe.label}
-                  />
-                ) : (
-                  <img
-                    className={classes.image}
-                    src={food.recipe.image}
-                    alt={food.recipe.label}
-                  />
-                )}
+                  {food.recipe.image === null ? (
+                    <img
+                      className={classes.imageNotFound}
+                      src={imageNotFound.src}
+                      alt={food.recipe.label}
+                    />
+                  ) : (
+                    <img
+                      className={classes.image}
+                      src={food.recipe.image}
+                      alt={food.recipe.label}
+                    />
+                  )}
 
-                <Link
-                  className={classes.ingredientsLink}
-                  href={food.recipe.url}
-                  target="_blank"
-                >
-                  Click to see ingredients
-                </Link>
-              </div>
-            );
-          })}
-      </ul>
+                  <Link
+                    className={classes.ingredientsLink}
+                    href={food.recipe.url}
+                    target="_blank"
+                  >
+                    Click to see ingredients
+                  </Link>
+                </div>
+              );
+            })}
+        </ul>
+      )}
     </>
   );
 };

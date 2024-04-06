@@ -2,7 +2,7 @@
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  border: 5px dashed black;
+  border: 5px dashed white;
 
   animation: spin 5s linear infinite;
 

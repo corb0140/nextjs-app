@@ -30,6 +30,9 @@ const MovieCard = ({ movies, location }) => {
     }
   }, [movies]);
 
+  const randomNumber = Math.floor(Math.random() * movies.length);
+  console.log(randomNumber);
+
   return (
     <>
       <div className={classes.buttonContainer}>
@@ -49,13 +52,10 @@ const MovieCard = ({ movies, location }) => {
       ) : (
         <ul className={classes.cardList}>
           {movies.length > 0 &&
-            movies.map((movie) => {
-              return (
-                <Link
-                  href={`https://www.themoviedb.org/movie/${movie.id}-${movie.title}?language=en-CA`}
-                  target="_blank"
-                  key={movie.id}
-                >
+            movies
+              .filter((movie, index) => index === randomNumber)
+              .map((movie) => {
+                return (
                   <li className={classes.card}>
                     <div className={classes.imageContainer}>
                       {movie.poster_path === null ? (
@@ -67,16 +67,31 @@ const MovieCard = ({ movies, location }) => {
                       ) : (
                         <img
                           className={classes.image}
-                          src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                           alt={movie.title}
                         />
                       )}
                     </div>
-                    <h1 className={classes.heading}>{movie.title}</h1>
+
+                    <div className={classes.content}>
+                      <h1 className={classes.heading}>{movie.title}</h1>
+                      {movie.overview === "" || movie.overview.length > 500 ? (
+                        "Overview not available or too long"
+                      ) : (
+                        <p className={classes.text}>{movie.overview}</p>
+                      )}
+
+                      <Link
+                        href={`https://www.themoviedb.org/movie/${movie.id}-${movie.title}?language=en-CA`}
+                        target="_blank"
+                        className={classes.button}
+                      >
+                        Click For More Details
+                      </Link>
+                    </div>
                   </li>
-                </Link>
-              );
-            })}
+                );
+              })}
         </ul>
       )}
     </>

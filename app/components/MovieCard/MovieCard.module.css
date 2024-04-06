@@ -1,17 +1,15 @@
 .cardList {
-  --cols: 1;
-  display: grid;
-  grid-template-columns: repeat(var(--cols), 1fr);
-  gap: 0.5rem;
-
   list-style: none;
+  /* height: auto;
+  width: auto; */
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  --cols: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  align-items: start;
+  justify-content: start;
   gap: 0.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -22,37 +20,45 @@
   height: 500px;
 }
 
-.card:hover {
-  scale: 1.02;
-}
-
 .heading {
   font-weight: 500;
   color: #000;
   flex-grow: 1;
 }
 
-.paragraph {
-  color: #000;
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
 }
 
 .imageContainer {
-  height: 600px;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   border-radius: 0.5rem;
+
+  display: flex;
 }
 
 .image {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: fill;
   border-radius: 0.5rem;
 }
 
 .imageNotFound {
   height: 400px;
   width: 100%;
-  object-fit: contain;
+  object-fit: fill;
+}
+
+.text {
+  color: #000;
+  display: none;
 }
 
 .buttonContainer {
@@ -78,15 +84,19 @@
   transition: background-color 0.3s;
 }
 
-@media screen and (min-width: 40em) {
-  .cardList {
+@media screen and (min-width: 35em) {
+  .card {
+    height: 550px;
+    max-width: 700px;
     --cols: 2;
-    gap: 1rem;
   }
-}
 
-@media screen and (min-width: 65em) {
-  .cardList {
-    --cols: 3;
+  .image {
+    width: unset;
+    object-fit: cover;
+  }
+
+  .text {
+    display: block;
   }
 }

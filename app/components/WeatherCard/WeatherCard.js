@@ -1,12 +1,13 @@
 "use client";
 
+import Loader from "../Loader/Loader";
 import classes from "./WeatherCard.module.css";
 import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
 const WeatherCard = ({ weather, location }) => {
-  const [showCard, setShowCard] = useState(true);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   const data = weather.data;
@@ -24,14 +25,16 @@ const WeatherCard = ({ weather, location }) => {
   };
 
   useEffect(() => {
-    if (data.name) {
-      setShowCard(false);
+    if (data.weather[0].main !== "") {
+      setLoading(false);
     }
-  }, [data.name]);
+  }, [data]);
 
   return (
     <>
-      {showCard ? (
+      {loading && <Loader />}
+
+      {loading === true ? (
         ""
       ) : (
         <div className={classes.card}>

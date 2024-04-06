@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 
 import WeatherCard from "../components/WeatherCard/WeatherCard";
 
+export const fetchCache = "force-no-store";
+
 const page = async ({ params }) => {
   let { location } = params;
   const decodedLocation = decodeURIComponent(location);

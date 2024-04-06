@@ -8,6 +8,7 @@ export async function GET(request) {
     `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&include_adult=false&language=en-US&page=1`,
     {
       method: "GET",
+      next: { revalidate: 0 },
       headers: {
         accept: "application/json",
       },

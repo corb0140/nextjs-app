@@ -9,6 +9,7 @@ export async function GET(request) {
     `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${appId}&app_key=${apiKey}`,
     {
       method: "GET",
+      next: { revalidate: 0 },
       headers: {
         accept: "application/json",
       },
@@ -27,6 +28,7 @@ export async function GET(request) {
       "access-control-allow-methods": "GET,HEAD",
       "access-control-allow-origin": "*",
     },
+
     status: 200,
   });
 }

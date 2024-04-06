@@ -8,6 +8,7 @@ export async function GET(request) {
     `https://api.openweathermap.org/data/2.5/weather?q=${locale}&appid=${apiKey}&units=metric`,
     {
       method: "GET",
+      next: { revalidate: 0 },
       headers: {
         accept: "application/json",
       },

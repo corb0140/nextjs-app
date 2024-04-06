@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 
 import MovieCard from "@/app/components/MovieCard/MovieCard";
 
+export const fetchCache = "force-no-store";
+
 const page = async ({ params, searchParams }) => {
   let { location } = params;
   const decodedLocation = decodeURIComponent(location);

@@ -14,7 +14,7 @@ const page = () => {
   return (
     <div className="container max-w-full flex flex-col  justify-center items-center p-10">
       <h1 className="text-2xl text-white text-center">
-        ERROR 500: Failed to fetch data from API
+        ERROR 500: Something went wrong
       </h1>
 
       <div className="block w-96">

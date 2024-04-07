@@ -30,8 +30,7 @@ const MovieCard = ({ movies, location }) => {
     }
   }, [movies]);
 
-  // const randomNumber = Math.floor(Math.random() * movies.length);
-  const randomNumber = 3;
+  const randomNumber = Math.floor(Math.random() * movies.length);
 
   return (
     <>

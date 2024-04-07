@@ -6,7 +6,7 @@
 
   animation: spin 5s linear infinite;
 
-  margin: 30% auto;
+  margin: 10% auto;
 }
 
 @keyframes spin {

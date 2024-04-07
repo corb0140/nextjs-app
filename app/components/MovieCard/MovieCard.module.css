@@ -1,9 +1,3 @@
-.cardList {
-  list-style: none;
-  /* height: auto;
-  width: auto; */
-}
-
 .card {
   --cols: 1;
   display: grid;

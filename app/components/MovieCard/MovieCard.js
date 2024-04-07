@@ -31,7 +31,6 @@ const MovieCard = ({ movies, location }) => {
   }, [movies]);
 
   const randomNumber = Math.floor(Math.random() * movies.length);
-  console.log(randomNumber);
 
   return (
     <>
@@ -50,13 +49,13 @@ const MovieCard = ({ movies, location }) => {
       {loading === true ? (
         ""
       ) : (
-        <ul className={classes.cardList}>
+        <div>
           {movies.length > 0 &&
             movies
               .filter((movie, index) => index === randomNumber)
               .map((movie) => {
                 return (
-                  <li className={classes.card}>
+                  <div className={classes.card}>
                     <div className={classes.imageContainer}>
                       {movie.poster_path === null ? (
                         <img
@@ -89,10 +88,10 @@ const MovieCard = ({ movies, location }) => {
                         Click For More Details
                       </Link>
                     </div>
-                  </li>
+                  </div>
                 );
               })}
-        </ul>
+        </div>
       )}
     </>
   );

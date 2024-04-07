@@ -53,7 +53,6 @@
 .text {
   color: #000;
   display: none;
-  font-weight: 500;
 }
 
 .buttonContainer {
@@ -93,6 +92,6 @@
 
   .text {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }

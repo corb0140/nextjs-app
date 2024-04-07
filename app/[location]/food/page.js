@@ -22,8 +22,8 @@ const page = async ({ params, searchParams }) => {
   let data = await response.json();
 
   return (
-    <div className="container max-w-full p-10 flex flex-col justify-center">
-      <h2 className="pb-3 text-white">
+    <div className="container max-w-full py-2 px-10 flex flex-col justify-center">
+      <h2 className="py-2 text-white">
         Recipe for:
         <span className="text-teal-200 pl-1 font-semibold">{query}</span>
       </h2>

@@ -75,7 +75,9 @@ const MovieCard = ({ movies, location }) => {
                     <div className={classes.content}>
                       <h1 className={classes.heading}>{movie.title}</h1>
                       {movie.overview === "" || movie.overview.length > 500 ? (
-                        "Overview not available or too long"
+                        <p className={classes.text}>
+                          Overview not available or too long
+                        </p>
                       ) : (
                         <p className={classes.text}>{movie.overview}</p>
                       )}

@@ -16,7 +16,7 @@ export async function GET(request) {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data from The Movie Database API");
+    throw new Error("Failed to fetch data from MovieDB API");
   }
 
   const data = await res.json();

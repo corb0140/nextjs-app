@@ -13,7 +13,7 @@ const page = async ({ params }) => {
   const response = await fetch(`${base}/api/weather?locale=${decodedLocation}`);
 
   if (!response.ok) {
-    redirect("/404");
+    redirect("/error/404");
   }
 
   const data = await response.json();

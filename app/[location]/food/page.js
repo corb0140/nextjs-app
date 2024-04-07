@@ -16,7 +16,7 @@ const page = async ({ params, searchParams }) => {
   const response = await fetch(`${base}/api/food?q=${query}`);
 
   if (!response.ok) {
-    redirect("/404");
+    redirect("/error/500");
   }
 
   let data = await response.json();

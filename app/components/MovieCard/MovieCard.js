@@ -14,13 +14,11 @@ const MovieCard = ({ movies, location }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
-  const back = (ev) => {
-    ev.preventDefault();
+  const back = () => {
     router.back();
   };
 
-  const home = (ev) => {
-    ev.preventDefault();
+  const home = () => {
     router.push("/");
   };
 
